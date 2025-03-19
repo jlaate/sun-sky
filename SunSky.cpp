@@ -490,8 +490,8 @@ void cSunSkyPreetham::Update(const Vec3f& sun, float turbidity, float overcast, 
         mPerez_Y[4] *= invOvercast;
 
         // lerp towards a fit of the CIE cloudy sky model: 4, -0.7
-        mPerez_Y[0] = lerp(mPerez_Y[0],  4.0f, overcast);
-        mPerez_Y[1] = lerp(mPerez_Y[1], -0.7f, overcast);
+        mPerez_Y[0] = std::lerp(mPerez_Y[0],  4.0f, overcast);
+        mPerez_Y[1] = std::lerp(mPerez_Y[1], -0.7f, overcast);
 
         // lerp base colour towards white point
         mZenith.x = mZenith.x * invOvercast + 0.333f * overcast;
@@ -806,8 +806,8 @@ void cSunSkyHosek::Update(const Vec3f& sun, float turbidity, Vec3f rgbAlbedo, fl
             mCoeffsXYZ[j][2] += is;
 
             // Take A/B to  CIE cloudy sky model: 4, -0.7
-            mCoeffsXYZ[j][0] = lerp(mCoeffsXYZ[j][0],  4.0f, is);
-            mCoeffsXYZ[j][1] = lerp(mCoeffsXYZ[j][1], -0.7f, is);
+            mCoeffsXYZ[j][0] = std::lerp(mCoeffsXYZ[j][0],  4.0f, is);
+            mCoeffsXYZ[j][1] = std::lerp(mCoeffsXYZ[j][1], -0.7f, is);
         }
 
         float sc1 = EvalHosekCoeffs(mCoeffsXYZ[1], 1.0f, gammaZ, cosGammaZ) * 2.0f
@@ -818,8 +818,8 @@ void cSunSkyHosek::Update(const Vec3f& sun, float turbidity, Vec3f rgbAlbedo, fl
         mRadXYZ *= rescale;
 
         // move back to white point
-        mRadXYZ.x = lerp(mRadXYZ.x, mRadXYZ.y, is);
-        mRadXYZ.z = lerp(mRadXYZ.z, mRadXYZ.y, is);
+        mRadXYZ.x = std::lerp(mRadXYZ.x, mRadXYZ.y, is);
+        mRadXYZ.z = std::lerp(mRadXYZ.z, mRadXYZ.y, is);
     }
 
 #ifdef LOCAL_DEBUG

@@ -139,6 +139,7 @@ inline float sqrlen(float r)
 inline double sqrlen(double r)
 { return sqr(r); }
 
+/*
 inline float lerp(float a, float b, float s)
 { return (1.0f - s) * a + s * b; }
 inline double lerp(double a, double b, double s)
@@ -149,7 +150,7 @@ template<class T_Value> inline T_Value lerp(T_Value x, T_Value y, Real s)
     
 template<> inline float lerp<float>(float x, float y, Real s)
 { return float(x + (y - x) * s); }
-
+*/
 template<class T> inline T vl_min(T a, T b)
 {
     return a < b ? a : b;
